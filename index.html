@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <script type="text/babel">
+      const rootElement = document.getElementById('root')
+
+      const Header = () => (
+        <nav>
+          <h1>CONTACTS</h1>
+          <button id="button-pesquisar">Search</button>
+        </nav>
+      )
+
+      const Card = ({ profilePicture, username, personProfession }) => (
+        <div class="card">
+          <div class="card-content">
+            <div class="person-information-card">
+              <img
+                class="img-da-pessoa"
+                src={profilePicture}
+                alt="Foto da pessoa"
+              />
+              <div class="informacoes">
+                <span class="cor-p1">{username}</span>
+                <span class="cor-p2">{personProfession}</span>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <button class="contact-button">Call</button>
+              <button class="contact-button">Send e-mail</button>
+            </div>
+          </div>
+        </div>
+      )
+
+      const Main = ({ children }) => <main>{children}</main>
+
+      const Footer = () => <p class="p1-cor">We found 23 contacts</p>
+
+      const Page = ({ children }) => <>{children}</>
+
+      const element = (
+        <Page>
+          <Header></Header>
+          <Main>
+            <Card
+              profilePicture="https://source.unsplash.com/80x80/?people"
+              username="Tom James"
+              personProfession="Programmer"
+            ></Card>
+            <Card
+              profilePicture="https://source.unsplash.com/90x90/?people"
+              username="Alessa Smith"
+              personProfession="Manager"
+            ></Card>
+            <Card
+              profilePicture="https://source.unsplash.com/100x100/?people"
+              username="Kate Minard"
+              personProfession="Web Designer"
+            ></Card>
+            <Card
+              profilePicture="https://source.unsplash.com/110x110/?people"
+              username="John Tudor"
+              personProfession="Database Admin"
+            ></Card>
+          </Main>
+          <Footer></Footer>
+        </Page>
+      )
+
+      ReactDOM.render(element, rootElement)
+    </script>
+  </body>
+</html>
